@@ -76,7 +76,7 @@ public class TSP extends JPanel {
 	TSP tsp = new TSP();
         frame.getContentPane().add(tsp);
 	
-	Solver solver = new Opt2();
+	Solver solver = new griddy();
         int[] tour = solver.solveTSP(tsp.connections.getMatrix());
 	
 	frame.pack();
