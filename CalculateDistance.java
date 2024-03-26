@@ -1,7 +1,7 @@
 public class CalculateDistance {
     public int calculateTourLength(double[][] connections,int[] tour) {
         int length = 0;
-        for (int i = 0; i < tour.size() - 1; i++) {
+        for (int i = 0; i < tour.length - 1; i++) {
             int from = tour.get(i);
             int to = tour.get(i + 1);
             length += connections[from][to];
