@@ -9,5 +9,5 @@ public interface Solver {
      * @param points    The array of points.
      * @return An array representing the optimal order of visiting the points.
      */
-    int[] solveTSP(double[][] distances, Point[] points);
+    int[] solveTSP(double[][] distances);
 }
