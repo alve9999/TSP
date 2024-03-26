@@ -41,7 +41,7 @@ public class TSP extends JPanel {
     private static final int HEIGHT = 1000;
     private static final int POINT_SIZE = 5;
     private static final int NUM_POINTS = 100;
-    private PointMatrix connections;
+    private static PointMatrix connections;
     
     private Point[] points;
     
@@ -73,9 +73,12 @@ public class TSP extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Random Points Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new TSP());
-
-
+	TSP tsp = new TSP();
+        frame.getContentPane().add(tsp);
+	
+	Solver solver = new Opt2();
+        int[] tour = solver.solveTSP(tsp.connections.getMatrix());
+	
 	frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
