@@ -1,5 +1,6 @@
+package com;
 public class CalculateDistance {
-    public int calculateTourLength(double[][] connections,int[] tour) {
+    public static int calculateTourLength(double[][] connections,int[] tour) {
         int length = 0;
         for (int i = 0; i < tour.length - 1; i++) {
             int from = tour[i];
