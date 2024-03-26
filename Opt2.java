@@ -6,7 +6,7 @@ public class Opt2 implements Solver{
     public int[] solveTSP(double[][] distances){
         int n = distances.length;
         boolean improvement = true;
-        int[] tour = new int[n];
+        int[] tour = new int[n+1];
         for (int i = 0; i < n; i++) {
             tour[i] = i;
         }
@@ -25,6 +25,7 @@ public class Opt2 implements Solver{
                 }
             }
         }
+	tour[n]=tour[0];
 	return tour;
     }
     
