@@ -11,7 +11,7 @@ class PointMatrix {
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points.length; j++) {
                 if (i != j) {
-		    double dx = (points[i].x-points[i].x);
+		    double dx = (points[i].x-points[j].x);
 		    double dy = (points[i].y-points[j].y);
                     matrix[i][j] = Math.sqrt(dx*dx+dy*dy);
                 } else {
@@ -88,7 +88,7 @@ public class TSP extends JPanel {
         JFrame frame = new JFrame("Random Points Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	TSP tsp = new TSP();
-	Solver solver = new griddy();
+	Solver solver = new Opt2();
         int[] tour = solver.solveTSP(tsp.connections.getMatrix());
 	tsp.index = tour;
 
