@@ -1,6 +1,6 @@
 
 
-public interface TSPSolver {
+public interface Solver {
     /**
      * Solves the Traveling Salesman Problem (TSP) given a matrix of distances
      * between points and an array of points.
