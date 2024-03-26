@@ -44,7 +44,7 @@ public class TSP extends JPanel {
     private static PointMatrix connections;
     
     private Point[] points;
-    
+    private int[] tour;
     public TSP() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         generateRandomPoints();
@@ -68,20 +68,22 @@ public class TSP extends JPanel {
             g.setColor(Color.BLACK);
             g.fillOval(point.x, point.y, POINT_SIZE, POINT_SIZE);
         }
+	g.setColor(Color.BLUE);
+        for (int i = 0; i < tour.length - 1; i++) {
+            Point p1 = points[tour[i]];
+            Point p2 = points[tour[i + 1]];
+            g.drawLine(p1.x, p1.y, p2.x, p2.y);
+        }
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Random Points Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	TSP tsp = new TSP();
-<<<<<<< HEAD
-	Solver solver = new Opt2();
-=======
-        frame.getContentPane().add(tsp);
-	
 	Solver solver = new griddy();
->>>>>>> 71172875b5049e9db7829424d96ec1537025bcb7
-        int[] tour = solver.solveTSP(tsp.connections.getMatrix());
+	
+        tsp.tour = solver.solveTSP(tsp.connections.getMatrix());
+        frame.getContentPane().add(tsp);
 	
 	frame.pack();
         frame.setLocationRelativeTo(null);
