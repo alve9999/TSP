@@ -31,7 +31,10 @@ public class griddy implements Solver {
         
         // Return to the starting point to complete the tour
         tour[numPoints - 1] = 0;
-        
+        for(int i = 0;i<tour.length;i++){
+            System.out.println(tour[i]);
+        }
+        System.out.println("length: "+ tour.length);
         return tour;
     }
 }

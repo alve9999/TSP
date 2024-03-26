@@ -43,8 +43,7 @@ public class TSP extends JPanel {
     private static final int NUM_POINTS = 100;
     private static PointMatrix connections;
     
-    public Point[] points;
-    public int[] index;
+    private Point[] points;
     
     public TSP() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -65,22 +64,9 @@ public class TSP extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-
-        // Draw points
-        g.setColor(Color.RED);
         for (Point point : points) {
-            g.fillOval(point.x - 5, point.y - 5, 10, 10);
-        }
-
-        // Draw path
-        g.setColor(Color.BLUE);
-        for (int i = 0; i < index.length - 1; i++) {
-            int index1 = index[i];
-            int index2 = index[i + 1];
-            Point p1 = points[index1];
-            Point p2 = points[index2];
-            g.drawLine(p1.x, p1.y, p2.x, p2.y);
+            g.setColor(Color.BLACK);
+            g.fillOval(point.x, point.y, POINT_SIZE, POINT_SIZE);
         }
     }
 
@@ -88,13 +74,16 @@ public class TSP extends JPanel {
         JFrame frame = new JFrame("Random Points Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	TSP tsp = new TSP();
+<<<<<<< HEAD
 	Solver solver = new Opt2();
-        int[] tour = solver.solveTSP(tsp.connections.getMatrix());
-	tsp.index = tour;
-
-	frame.getContentPane().add(tsp);
+=======
+        frame.getContentPane().add(tsp);
 	
-        frame.pack();
+	Solver solver = new griddy();
+>>>>>>> 71172875b5049e9db7829424d96ec1537025bcb7
+        int[] tour = solver.solveTSP(tsp.connections.getMatrix());
+	
+	frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
