@@ -1,15 +1,18 @@
 import java.util.stream.IntStream;
+import static common.CalculateDistance.calculateTourLength;
 
-public class BruteForce implements Solver {
+
+public class BruteForce extends Solver {
 
     public int[] solveTSP(double[][] distances) {
         int n = distances.length;
-        int[] permutation = IntStream.range(0, n).toArray();
+        int[] permutation = IntStream.range(0, n+1).toArray();
+        permutation[n]=permutation[0];
         int[] bestTour = permutation.clone();
-        int shortestLength = CalculateDistance.calculateTourLength(distances, bestTour);
+        int shortestLength = calculateTourLength(distances, bestTour);
 
-        while (nextPermutation(permutation)) {
-            int currentLength = CalculateDistance.calculateTourLength(distances, permutation);
+        while (nextPermutation(permutation) && timer){
+            int currentLength = calculateTourLength(distances, permutation);
             if (currentLength < shortestLength) {
                 shortestLength = currentLength;
                 bestTour = permutation.clone();
@@ -20,7 +23,7 @@ public class BruteForce implements Solver {
     }
 
     private boolean nextPermutation(int[] permutation) {
-        int n = permutation.length;
+        int n = permutation.length-1;
 
         // Find the largest index k such that a[k] < a[k + 1]
         int k = -1;
@@ -54,6 +57,7 @@ public class BruteForce implements Solver {
             permutation[i] = permutation[j];
             permutation[j] = temp;
         }
+        permutation[n]=permutation[0];
 
         return true;
     }

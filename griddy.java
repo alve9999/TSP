@@ -1,10 +1,9 @@
-import java.util.Arrays;
 
-public class griddy implements Solver {
+public class griddy extends Solver {
     
     public int[] solveTSP(double[][] distances) {
         int numPoints = distances.length;
-        int[] tour = new int[numPoints];
+        int[] tour = new int[numPoints+1];
         boolean[] visited = new boolean[numPoints];
         
         // Start from the first point
@@ -28,13 +27,9 @@ public class griddy implements Solver {
             tour[i] = nearestCity;
             visited[nearestCity] = true;
         }
-        
+        tour[numPoints]=0;
+
         // Return to the starting point to complete the tour
-        tour[numPoints - 1] = 0;
-        for(int i = 0;i<tour.length;i++){
-            System.out.println(tour[i]);
-        }
-        System.out.println("length: "+ tour.length);
         return tour;
     }
 }

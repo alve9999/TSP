@@ -1,7 +1,7 @@
 
-import com.CalculateDistance;
+import common.CalculateDistance;
 
-public class Opt2 implements Solver{
+public class Opt2 extends Solver{
 
     public int[] solveTSP(double[][] distances){
         int n = distances.length;
@@ -13,8 +13,8 @@ public class Opt2 implements Solver{
 
         while (improvement) {
             improvement = false;
-            for (int i = 1; i < n - 1; ++i) {
-                for (int j = i + 1; j < n; ++j) {
+            for (int i = 1; i < n; i++) {
+                for (int j = i + 1; j < n-1; j++) {
                     int[] newOrder = tour.clone();
                     reverse(newOrder, i, j);
                     double newDistance = CalculateDistance.calculateTourLength(distances, newOrder);
@@ -25,7 +25,7 @@ public class Opt2 implements Solver{
                 }
             }
         }
-	tour[n]=tour[0];
+	tour[n]=0;
 	return tour;
     }
     
