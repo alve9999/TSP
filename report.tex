@@ -1,0 +1,38 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{TSP lösnings algoritmer}
+
+\author{\IEEEauthorblockN{Alve Lindell}
+\and
+\IEEEauthorblockN{Oliver Sjögren}
+\and
+\IEEEauthorblockN{Vincent Lindell}
+}
+
+\maketitle
+\section{Introduktion}
+
+\section{Bagrund}
+\subsection{Traveling Salesman Problem}
+Traveling Salesman Problem även känt som TSP är ett problem som består av en stor mängd punkter och problemet är att hitta den minsta vägen som passerar genom alla punkter en gång och sedan återgår till starten. Detta problemet är väldigt svårt att lösa optimalt då antalet kombinationer ökar med faktorialen av antalet städer och därför ger de flesta algortimerna inte en garanterat optimal lösning utan bara en bra lösning. Detta problemet har många applikationer i verkligheten t.ex hur hittar man den mest effektiva vägen för att levererar paket till n personer.
+\subsection{Brute-force search}
+Brute-force search är en sökmetod för hitta en optimal lösning till Travelling salesman problem. Det är en metod som fungerar genom en uttömande sökning genom att iterera över alla permutationer av vägar. Detta garanterar en optimal lösning men har en tidskomplexitet av $\mathcal{O}(n!n)$.
+\subsection{Greedy algoritm}
+En greedy algoritm är en algoritm som fungerar genom att göra lokalt optimala val vid varje steg av algoritmen. I fallet av TSP så fungerar denna algortimen genom att ta det kortaste vägvalet i varje steg och sedan iterera tills man passerat alla noder. Detta har ingen garanti för att generera en optimal lösning men har en låg tidskomplexitet av $\mathcal{O}(n^2)$ då vi för varje nod behöver hitta den närmaste noden vilket är en $\mathcal{O}(n)$ operation som vi gör $n$ gånger.
+\subsection{Antcolony optimization}
+\subsection{2-Opt}
+2-Opt är en algoritm som utgått ifrån en dålig lösning och gör förbättringar på denna vägen. Detta görs genom att testa alla möjliga sätt som två vägar kan bytas och tar minimiy av alla dessa. Detta producerar inte ett optimalt resultat men ifall man utgår ifrån en väg producerad av t.ex Greedy algoritm så kan den producera en förbättrad version av den. Dennas tidskomplexitet är $\mathcal{O}(n^3)$ då vi har $n^2$ möjliga sätt att byta två vägar och för varje byte behöver vi beräkna den totala längden en $\mathcal{O}(n)$ operation.
+\subsection{simulated annealing}
+
+\end{document}
